@@ -4,8 +4,14 @@ const Schema = mongoose.Schema
 	
 const flightSchema = new Schema({
   airLine: String,
-  airPort: string,
+  airPort: String,
   flightNo: Number,
   departs: Date,
-  nowShowing: Boolean
+  
 })
+
+const Flight = mongoose.model("Flight", flightSchema)
+
+export {
+Flight
+}
