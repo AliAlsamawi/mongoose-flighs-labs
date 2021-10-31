@@ -1,0 +1,57 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/flights/new.css">
+<%- include('../partials/nav') %> 
+
+<main>
+  <h1><%= title %></h1>
+  <section>
+    <div>Airport: </div>
+    <div><%= flight.airport %></div>
+    <div>Airline: </div>
+    <div><%= flight.airline %></div>
+    <div>Flight No.: </div>
+    <div><%= flight.flightNo %></div>
+    <div>Departure: </div>
+    <div><%= flight.departs %></div>
+  </section>
+
+
+  
+    <form id="add-ticket-form" action="/flights/<%= flight._id %>/ticket " method="POST">
+      <label>Seat:
+        <input type="text" name="seat" required pattern="[A-F][1-9]\d?"></input>
+      </label><br>
+      <label>Price:
+        <input type="number" min="0" name="price">
+      </label><br>
+          <button type="submit">Add Ticket</button>
+    </form>
+  
+
+
+    <% if (flight.ticket.length) { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Seat: </th>
+            <th>Price: </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% flight.ticket.forEach(function(tickets) { %>
+            <tr>
+              <td><%= tickets.seat %></td>
+              <td><%= tickets.price %></td>              
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <h3>No Ticket Info Added</h3>
+    <% } %>
+
+</main>
+
+
+
+<%- include('../partials/footer') %>

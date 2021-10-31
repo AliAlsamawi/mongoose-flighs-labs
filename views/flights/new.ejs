@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-<body>
-  <h1>Enter a New flights</h1>
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/flights/new.css">
+<%- include('../partials/nav') %> 
+
+<main>
+  <h1><%= title %> </h1>
   <form action="/flights" method="POST">
     <label>Airline:
       <select type="text" name="airline" value="n/a">
@@ -29,8 +24,11 @@
         <option value="SAN">SAN</option>
       </select>
     </label><br>
-    <label>Departs:<br>
-    <button type="submit">Add Flight</button>
+    <label>Departs:
+      <input type="datetime-local" name="departs">
+    </label><br>
+        <button type="submit">Add Flight</button>
   </form>
-</body>
-</html>
+</main>
+
+<%- include('../partials/footer') %> 
