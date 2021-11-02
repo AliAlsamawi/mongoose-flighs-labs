@@ -1,4 +1,4 @@
-import { request } from 'express'
+import { Destination } from '../models/destination.js'
 import { Flight } from '../models/flight.js'
 
 
@@ -15,13 +15,18 @@ function create(req, res){
     }
   }
   // whenever you add data it goes to req.body
-  const flight = new Flight (req.body)
+  // const flight = new Flight (req.body)
   Flight.create(req.body, function(error, flight){
-    console.log(error)
+  
+    flight.save(function (err) {
+    if (err) return res.render('flights/new')
     res.redirect("/flights")
-
+    })
   })
-}
+  }
+
+
+
 
 function index(req, res){
   Flight.find({}, function(error, flights){
@@ -52,7 +57,6 @@ function deleteFlight(req, res){
 
 
 function createTicket(req, res){
-  console.log("creating new ticket!")
   Flight.findById(req.params.id, function (error, flight){
     flight.ticket.push(req.body)
     flight.save(function(err){

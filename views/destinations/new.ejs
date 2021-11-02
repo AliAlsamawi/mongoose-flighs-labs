@@ -1,0 +1,22 @@
+<%- include("../partials/html-head") %>
+
+<link rel="stylesheet" href="/stylesheets/destinations/new.css">
+  
+<%- include("../partials/nav") %>
+
+<main>
+  <h1><%= title %></h1>
+  <form action="/destinations/new" method="POST">    
+    <label>Destination:
+      <select>
+        <option value="AUS">AUS</option>
+        <option value="DFW">DFW</option>
+        <option value="DEN">DEN</option>
+        <option value="LAX">LAX</option>
+        <option value="SAN">SAN</option>
+      </select>
+    </label>
+    <button type="submit">Add Flight</button>
+  </form>  
+</main>
+<%- include('../partials/footer') %> 
