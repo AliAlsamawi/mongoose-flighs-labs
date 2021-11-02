@@ -13,11 +13,13 @@ router.get('/', flightsCtrl.index)
 // GET /flights/:id
 router.get('/:id', flightsCtrl.show)
 
+
 // POST /flights
 router.post('/', flightsCtrl.create)
 
 // POST /flight/:id
 router.post('/:id/ticket', flightsCtrl.createTicket)
+
 
 // DELETE /flights/:id
 router.delete('/:id', flightsCtrl.delete)

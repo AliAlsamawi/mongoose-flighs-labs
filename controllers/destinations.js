@@ -10,9 +10,19 @@ function newDestination(req, res) {
   })
 }
 
+function addToFlight(req, res){
+  Flight.findById(req.params.id, function(err, flight){
+    flight.destination.push(req.body.destinationId)
+    flight.save(function (err){
+      res.redirect(`/flights/new${flight._id}`)
+    })
+  })
+}
+
 export {
 
   newDestination as new,
+  addToFlight
 
 }
 

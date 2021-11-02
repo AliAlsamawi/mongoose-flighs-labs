@@ -6,17 +6,17 @@
 
 <main>
   <h1><%= title %></h1>
-  <form action="/destinations/new" method="POST">    
-    <label>Destination:
-      <select>
-        <option value="AUS">AUS</option>
-        <option value="DFW">DFW</option>
-        <option value="DEN">DEN</option>
-        <option value="LAX">LAX</option>
-        <option value="SAN">SAN</option>
-      </select>
-    </label>
-    <button type="submit">Add Flight</button>
+  <p>Please first assure that the Destination is not in the dropdown</p>
+  <select>
+    <% destinations.forEach(function(destination){ %>
+    <option><%= destination.airport %></option>
+    <% }) %>
+    </select>
+
+  <form action="/destinations" method="POST">    
+    <label>Destination:</label>
+    <input type="text" name="airport">
+    <button type="submit">Add Destination</button>
   </form>  
 </main>
 <%- include('../partials/footer') %> 
