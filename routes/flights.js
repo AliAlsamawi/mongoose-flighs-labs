@@ -20,6 +20,7 @@ router.post('/', flightsCtrl.create)
 // POST /flight/:id
 router.post('/:id/ticket', flightsCtrl.createTicket)
 
+router.post('/:id/destinations', flightsCtrl.addToFlight)
 
 // DELETE /flights/:id
 router.delete('/:id', flightsCtrl.delete)
