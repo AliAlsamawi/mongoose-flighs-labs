@@ -13,10 +13,20 @@
     <div><%= flight.flightNo %></div>
     <div>Departure: </div>
     <div><%= flight.departs %></div>
-  </section>
+    <div> destinations:</div>
+    
+    <%- flight.destinations.map(f => `<li>${f.airport}</li>`).join('') %>
+
+  </ul>
+</section>
 
 
   
+<form action="/flights/<%=flight._id%>/destinations" method="POST">
+  <select name="destinationId">
+    <%-destinations.map(f => `<option value="${f._id}">${f.airport}</option>`).join('') %>
+  </select>
+  <button type="submit">Add to destination</button>
     <form id="add-ticket-form" action="/flights/<%= flight._id %>/ticket " method="POST">
       <label>Seat:
         <input type="text" name="seat" required pattern="[A-F][1-9]\d?"></input>
@@ -25,10 +35,11 @@
         <input type="number" min="0" name="price">
       </label><br>
           <button type="submit">Add Ticket</button>
-    </form>
-  
+          
+          </form>
 
-
+          </form>
+          
     <% if (flight.ticket.length) { %>
       <table>
         <thead>
